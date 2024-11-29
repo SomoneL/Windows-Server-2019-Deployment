@@ -210,4 +210,8 @@ This project walks you through deploying Windows Server 2019 as a domain control
 <li>If the policies are not applying as expected, use Resultant Set of Policy (RSoP) or gpresult command to diagnose issues: gpresult /r</li>
 </ul>
 </li></ul>
+   </ol>
+<h2>Step 7: Conclusion</h2>
+ In this project, I demonstrated the deployment of Windows Server 2019 as a domain controller and the configuration of Group Policy Management to manage users and computers in an Active Directory environment. Through this process, I successfully applied security policies and user configurations across the domain. This project showcases my ability to set up server environments and efficiently manage systems using Group Policy, which is essential for maintaining a secure and well-organized IT infrastructure.     
+<ol>
 </ol>
