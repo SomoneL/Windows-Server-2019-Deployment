@@ -12,7 +12,8 @@ This project walks you through deploying Windows Server 2019 as a domain control
    <ul>
       <li>Create a new virtual machine (VM) in VirtualBox (or another virtualization platform) using the steps outlined in the </li>
    </ul>
-   [prevous project.](https://github.com/SomoneL/Setting-Up-Virtual-Machines-Using-VirtualBox)
+   
+   [previous project.](https://github.com/SomoneL/Setting-Up-Virtual-Machines-Using-VirtualBox)
    <ul>
       <li>Use the Windows Server 2019 ISO as the startup disk and install the server.</li>
    </ul>
