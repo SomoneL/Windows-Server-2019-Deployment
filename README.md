@@ -66,18 +66,11 @@ This project walks you through deploying Windows Server 2019 as a domain control
       </li>
       </ul
       <ul>
-         <li>Enter a Directory Services Restore Mode (DSRM) password and complete the installation.</li>
+         <li>Enter a Directory Services Restore Mode (DSRM) password and complete the installation then restart your server when prompted to do so. Sign back in after your server restarts. You will now see your domain name and login. </li>
       </ul>
    <br/>
-         <img src="https://imgur.com/VN7mw4r.png" height="40%" width="40%" alt="script"/>
-         <br/>
-      <li>Restart the Server:</li>
-      <ul>
-         <li>Right-click on your domain (e.g., yourdomain.local) and choose New > Organizational Unit.</li>
-      </ul>
-      <ul>
-         <li>Name the OU (e.g., Users or Workstations). This will help you organize and apply specific policies to users and computers.</li>
-      </ul>
+   <img src="https://imgur.com/3EnTNOD.png" height="40%" width="40%" alt="script"/>
+   <br/>
 </ol>
 <h2>Step 3: Set Up Active Directory Users and Computers</h2>
 <ol>
@@ -86,17 +79,19 @@ This project walks you through deploying Windows Server 2019 as a domain control
 <li>In Server Manager, click Tools and select Active Directory Users and Computers.</li>
 </ul>
 <br/>
-<img src="https://i.imgur.com/7V1Ieb7.png" height="40%" width="40%" alt="script"/>
+<img src="https://imgur.com/KafsZLo.png" height="40%" width="40%" alt="script"/>
 <br/>
 <li>Create Organizational Units (OUs):</li>
-<img src="https://i.imgur.com/HsDzzg6.png" height="40%" width="40%" alt="script"/>
-<br/>
 <ul>
-<li>Once the server has been promoted to a domain controller, the system will restart automatically.</li>
+<li>In the right menu, rick click your domain and select New > Organizational Unit. We will name it '_ADMINS' and we will create this to put our admin account that we will work with in. Think of it like a folder in Active Directory. </li>
 </ul>
-<li>Create User Accounts:</li>
-<img src="https://i.imgur.com/y0pv2di.png" height="40%" width="40%" alt="script" "/>
 <br/>
+<img src="https://imgur.com/bmbhuFq.png" height="40%" width="40%" alt="script"/>
+<br/>   
+<br/>
+<img src="https://imgur.com/hi9KKun.png" height="40%" width="40%" alt="script"/>
+<br/>  
+<li>Create User Accounts:</li>
 <ul>
 <li>Right-click the Users OU and select New > User.</li>
 </ul>
