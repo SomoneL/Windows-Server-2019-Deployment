@@ -71,6 +71,8 @@ This project walks you through deploying Windows Server 2019 as a domain control
       <img src="https://imgur.com/3EnTNOD.png" height="40%" width="40%" alt="script"/>
       <br/>
 </ol>
+
+
 <h2>Step 3: Set Up Active Directory Users and Computers</h2>
 <ol>
 <li>Open Active Directory Users and Computers:</li>
@@ -118,95 +120,55 @@ This project walks you through deploying Windows Server 2019 as a domain control
 <li>Test this account by signing out of your current account and signing in with the user credentials you just created. Be sure to select "Other user" before attempting to sign in. </li></ul>
 <br> <img src="https://imgur.com/DYdxjFx.png" height="40%" width="40%" alt="script" "/>
 <br/>
-   
-<li>Join Client Computers to the Domain(REMOVE FROM TUTORIAL???????)</li>
-<img src="https://i.imgur.com/y0pv2di.png" height="40%" width="40%" alt="script" "/>
-<br/>
-<ul>
-<li>On any client machine, (such as your Windows 10 VM. Click below for tutorial).
-[Setting Up Virtual Machines Using Virtual Box](https://github.com/SomoneL/Setting-Up-Virtual-Machines-Using-VirtualBox)  
-Right-click This PC, select Properties, and then click Change settings under Computer name.</li>
-</ul>
-<ul>
-<li>In System Properties, click Change and join the computer to your new domain by entering the domain name (e.g., yourdomain.local).</li>
-</ul>
-<ul>
-<li>You’ll need to provide the Administrator account credentials for the domain.</li>
-</ul>
-</li></ul>
-</ol>
-
-
+</ol>   
 
 
 <h2>Step 4: Install Group Policy Management </h2>
-<li>I will be creating a new group policy that will prevent the users in the group from being able to change thier password??????</li>
+<li>I will be creating a new group policy that will prevent the users in the group from being able to change thier password and from being able to add or remove programs. </li>
 <ol>
-   <li>Install Group Policy Management Feature:</li>
+   <li>Create and Install Group Policy Management Feature:</li>
    <ul>
       <li>Sign back into your original account and Open Server Manager and click Tools > Group Policy Management</li>
    </ul>
    <ul>
       <li>Navigate to the Group Policy Objects folder located in your created domain folder and create a new Group Policy Object (GPO).</li>
    </ul>
-     <br> <img src="https://imgur.com/yNKHxuh.png" height="30%" width="30%" alt="script"/>
-   <br/>
+     <br> <img src="https://imgur.com/yNKHxuh.png" height="30%" width="30%" alt="script"/><br/>
+   
    <li>Access All Group Policies provided by the System</li>
-   </ul>
    <ul>
       <li>Right click on your newly created GPO > Edit > Open the folders User Configuration > Policies > Administrative Templates > System. This shows all of the available Group Policies provided by the system. </li>
    </ul>
-   <img src="https://imgur.com/dAmt1iu.png" height="30%" width="30%" alt="script"/>
-   <li>Enforce Access Control</li>
+  <br> <img src="https://imgur.com/dAmt1iu.png" height="30%" width="30%" alt="script"/></br>
+  
+   <li>Implement Group Policy:'Remove Add or Remove Programs' and 'Remove Change Password' </li>
    <ul>
-      <li>Verify permissions by switching to different users and testing to see if you can access the created directories.</li>
+      <li>In the System folder, select 'Control Panel' > Add or Remove Programs > click 'Remove Add or Remove Programs' > Edit > Enabled > Ok. </li>
    </ul>
-   <img src="https://i.imgur.com/pY3M8ON.png" height="30%" width="30%" alt="script"/>
-</ol>
-<h2>Step 5: Create and Apply Group Policies</h2>
-<ol>
-   <li>Open Group Policy Management:</li>
+   <br><img src="https://imgur.com/aoz90W6.png" height="30%" width="30%" alt="script"/></br>
+
+   
    <ul>
-      <li>In Server Manager, click Tools and select Group Policy Management.</li>
+      <li>In the Administrative Templates folder, select 'Ctrl+Alt+Del Options' > Remove Change Password > Edit > Enabled > Ok. </li>
    </ul>
-   <li>Create a New Group Policy Object (GPO):</li>
+   <br><img src="https://imgur.com/uH6tglE.png" height="30%" width="30%" alt="script"/></br>
+
+
+  <li>Link the GPO to an OU:</li>
    <ul>
-      <li>In the Group Policy Management window, expand your domain (e.g., yourdomain.local).</li>
-   </ul>
-   <ul>
-      <li>Right-click Group Policy Objects and select New.
-   </ul>
-   <ul>
-      <li>Name the new GPO (e.g., Security Policy for Users).</li>
-   </ul>
-   <li>Edit the Group Policy:</li>
-   <ul>
-      <li>Right-click your new GPO and select Edit.</li>
-   </ul>
-   <ul>
-      <li>The Group Policy Management Editor will open, allowing you to configure settings for users and computers.</li>
-   </ul>
-   <ul>
-      <li>Examples of GPO settings:</li>
-      <ul>
-         <li>Password Policy: Navigate to Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies > Password Policy to enforce password complexity and expiration.</li>
-      </ul>
-      <ul>
-         <li>Software Restriction Policies: Use Computer Configuration > Policies > Windows Settings > Security Settings > Software Restriction Policies to control which software can run.</li>
-      </ul>
-   </ul>
-   <li>Link the GPO to an OU:</li>
-   <ul>
-      <li>In the Group Policy Management console, right-click on the OU where you want to apply the GPO (e.g., Users or Workstations).</li>
+      <li>In the Group Policy Management console, right-click on the OU where you want to apply the GPO (in this case our _ADMINS folder).</li>
    </ul>
    <ul>
       <li>Select Link an Existing GPO and choose the GPO you just created.</li>
    </ul>
+   <br> <img src="https://imgur.com/XhqdX6w.png" height="30%" width="30%" alt="script"/></br> 
+<ul>
+      <li>You should now have a new GPO connected to your _ADMIN account.</li>
+</ul>
+   <br> <img src="https://imgur.com/IcBuhJW.png" height="30%" width="30%" alt="script"/></br> 
+   <li>Testing a Group Policy</li>
    <ul>
-   </ul>
-   <li>Test the Group Policy</li>
-   <ul>
-      <li>On the client computer (Windows 10), log in as a user that is part of the domain.</li>
+      <li>Log in as a user that is part of the domain.</li>
    </ul>
    <ul>
       <li>Open Command Prompt and run the following command to update Group Policy: gpupdate /force</li>
@@ -215,25 +177,14 @@ Right-click This PC, select Properties, and then click Change settings under Com
       <li>Log off and log back in to see if the Group Policy settings have been applied.</li>
    </ul>
    <ul>
+      <li>Testing the ability to change a password. Running 'Ctrl+Alt+Delete' the menu does not have the option to 'Change a Password' </li>
+      
+   </ul>
+   <br> <img src="https://imgur.com/cgUA3sl.png" height="30%" width="30%" alt="script"/></br> 
+   <ul>  
 </ol>
-<h2>Step 6: Documenting and Analyzing Your Results</h2>
-<ol>
-<li>Review the Group Policies:</li>
-<ul>
-<li>Go back to Group Policy Management to review which GPOs are linked to which OUs.</li>
-</ul>
-<ul>
-<li>Ensure that the policies are correctly applied and functioning by testing on the client machines.</li>
-</ul>
-<br/>
-<img src="https://i.imgur.com/tBsG67J.png" height="40%" width="40%" alt="script"/>
-<br/>
-<li>Troubleshooting:</li>
-<ul>
-<li>If the policies are not applying as expected, use Resultant Set of Policy (RSoP) or gpresult command to diagnose issues: gpresult /r</li>
-</ul>
-</li></ul>
-</ol>
+
+
 <h2>Step 7: Conclusion</h2>
 In this project, I demonstrated the deployment of Windows Server 2019 as a domain controller and the configuration of Group Policy Management to manage users and computers in an Active Directory environment. Through this process, I successfully applied security policies and user configurations across the domain. This project showcases my ability to set up server environments and efficiently manage systems using Group Policy, which is essential for maintaining a secure and well-organized IT infrastructure.     
 <ol></ol>
