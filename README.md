@@ -10,8 +10,10 @@ This project walks you through deploying Windows Server 2019 as a domain control
    </ul>
    <li>Install Windows Server 2019 on a Virtual Machine or Physical Machine:</li>
    <ul>
-      <li>Create a new virtual machine (VM) in VirtualBox (or another virtualization platform) using the steps outlined in the previous project.</li>
+      <li>Create a new virtual machine (VM) in VirtualBox (or another virtualization platform) using the steps outlined in the </li>
    </ul>
+   
+   [prevous project.](https://github.com/SomoneL/Setting-Up-Virtual-Machines-Using-VirtualBox)
    <ul>
       <li>Use the Windows Server 2019 ISO as the startup disk and install the server.</li>
    </ul>
@@ -25,13 +27,6 @@ This project walks you through deploying Windows Server 2019 as a domain control
    <ul>
       <li>Leave the default options selected unless you require custom settings.</li>
    </ul>
-   <li>Configure Network Settings:</li>
-   <ul>
-      <li>Ensure that your server has a static IP address for stability in a network environment.</li>
-   </ul>
-   <ul>
-      <li>To set a static IP address, open Network & Internet Settings and manually configure your IP, subnet, default gateway, and DNS server.</li>
-   </ul>
 </ol>
 <h2>Step 2: Promote the Server to a Domain Controller</h2>
 <ol>
@@ -39,28 +34,43 @@ This project walks you through deploying Windows Server 2019 as a domain control
    <ul>
       <li>Open Server Manager and click on Add roles and features.</li>
    </ul>
+   <br/>
+      <img src="https://imgur.com/297vxr3.png" height="40%" width="40%" alt="script"/>
+   <br/>
    <ul>
-      <li>Select Active Directory Domain Services (AD DS) and follow the prompts to install the role.</li>
+      <li>Select Active Directory Domain Services (AD DS), select Add Features, and follow the prompts to install the role.</li>
    </ul>
+   <br/>
+      <img src="https://imgur.com/7mOyAeg.png" height="40%" width="40%" alt="script"/>
+   <br/>
+   <br/>
+      <img src="https://imgur.com/itw0t6K.png" height="40%" width="40%" alt="script"/>
+   <br/>
    <li>Promote Server to Domain Controller:</li>
    <ul>
       <li>After installation, click on the flag icon in Server Manager and select Promote this server to a domain controller.</li>
    </ul>
+   <br/>
+      <img src="https://imgur.com/O6kMSLS.png" height="40%" width="40%" alt="script"/>
+   <br/>
    <ul>
-      <li>Choose Add a new forest and enter a domain name (e.g., yourdomain.local). 
+      <li>Choose Add a new forest and enter a domain name (e.g., mydomain.local). 
          <br/>
       </li>
+      <br/>
+   <img src="https://imgur.com/yplSKi6.png" height="40%" width="40%" alt="script"/>
+   <br/>   
    </ul>
    <ul>
       <li>Set the Forest Functional Level and Domain Functional Level to Windows Server 2016 or higher.
-         <br/>
-         <img src="https://i.imgur.com/eVUHNRy.png" height="40%" width="40%" alt="script"/>
-         <br/>
       </li>
       </ul
       <ul>
          <li>Enter a Directory Services Restore Mode (DSRM) password and complete the installation.</li>
       </ul>
+   <br/>
+         <img src="https://imgur.com/VN7mw4r.png" height="40%" width="40%" alt="script"/>
+         <br/>
       <li>Restart the Server:</li>
       <ul>
          <li>Right-click on your domain (e.g., yourdomain.local) and choose New > Organizational Unit.</li>
@@ -98,7 +108,11 @@ This project walks you through deploying Windows Server 2019 as a domain control
 <img src="https://i.imgur.com/y0pv2di.png" height="40%" width="40%" alt="script" "/>
 <br/>
 <ul>
-<li>On any client machine (such as your Windows 10 VM), right-click This PC, select Properties, and then click Change settings under Computer name.</li>
+<li>On any client machine, (such as your Windows 10 VM. Click below for tutorial).
+
+ [Setting Up Virtual Machines Using Virtual Box](https://github.com/SomoneL/Setting-Up-Virtual-Machines-Using-VirtualBox)  
+   
+Right-click This PC, select Properties, and then click Change settings under Computer name.</li>
 </ul>
 <ul>
 <li>In System Properties, click Change and join the computer to your new domain by entering the domain name (e.g., yourdomain.local).</li>
